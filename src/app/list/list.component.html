@@ -1,0 +1,49 @@
+<mat-card>
+   <div fxLayout="column" fxLayoutAlign="start center">
+      <h1>My Tasks for Montblanc</h1>
+   </div>
+</mat-card>
+<br><br>
+<div fxLayoutAlign="center center">
+
+   <mat-card style="width: 50%;">
+
+      <div fxLayoutAlign="center start ">
+         <button class="md-button" mat-button color="primary" mat-raised-button (click)="addToDoList()">Add
+            Task</button>
+      </div>
+      <br>
+      <mat-form-field fxLayoutAlign="end start ">
+         <input #inputField matInput placeholder="Filter">
+         <button (click)="search()" matSuffix mat-icon-button>
+            <mat-icon>
+               search
+            </mat-icon>
+         </button>
+      </mat-form-field>
+
+      <p fxLayout="column" fxLayoutAlign="start center" matTooltip="Number of Tasks">{{todoService.index}}</p>
+
+
+
+      <div style="width: 90%;" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center"
+         *ngFor="let todo of todoService.viewList; let i = index">
+         <div style="width: 100%;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <button matTooltip="Check Task" mat-icon-button
+               (click)="this.todoService.changeStatusTodoListElement(todo)">
+               <mat-icon>
+                  check
+               </mat-icon>
+            </button>
+            <span [ngClass]="{green : todo.isDone}">{{todo.name}}</span>
+         </div>
+         <div style="width: 20%;" fxLayout="row" fxLayoutAlign="end start"><button mat-button color="warn"
+               mat-raised-button (click)="this.todoService.deleteToDo(todo)">Delete</button></div>
+         <p style="width: 20%;" fxLayout="row" fxLayoutAlign="end start">{{todo?.date | date}}</p>
+         <p style="width: 20%;" fxLayout="row" fxLayoutAlign="end start" [color]="todo.date">{{todo?.date | mypipe}}</p>
+
+      </div>
+
+
+   </mat-card>
+</div>

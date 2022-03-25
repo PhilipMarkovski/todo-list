@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <div fxLayout="row" fxLayoutAlign="center start">
+        <h1>
+            Add a new task
+        </h1>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center start">
+        <mat-form-field>
+            <input matInput placeholder="New" type="text" required maxlength="80" formControlName="nameFormControl"
+                required>
+            <mat-error *ngIf="nameFormControl.invalid">invalid</mat-error>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center start">
+        <mat-form-field>
+            <input formControlName="deadline" matInput [matDatepicker]="picker" placeholder="Deadline date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <br><br>
+    <div fxLayout="row" fxLayoutAlign="center start" >
+        <div>
+            <button mat-raised-button
+                (click)="addItem(form.get('nameFormControl').value,form.get('deadline').value)">add</button>
+        </div>
+
+        <br>
+        <div fxLayout="row" fxLayoutAlign="center start"><button mat-raised-button (click)="quitList()">close</button>
+        </div>
+    </div>
+
+</form>
