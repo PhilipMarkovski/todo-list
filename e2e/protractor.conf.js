@@ -19,7 +19,11 @@ exports.config = {
   //SELENIUM_PROMISE_MANAGER: false,
 
   baseUrl: 'http://localhost:4200/',
+  chromeDriver:'../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_100.0.4896.20',
   framework: 'jasmine',
+  chromeOptions:{
+    args:["--headless", "--window-size=800,600", "--disable-web-security"]
+  },
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
