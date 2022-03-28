@@ -6,7 +6,7 @@ describe("Calculator test", function(){
     var Header = element(by.tagName('h5'));
     it("async method", async()=>{
      await browser.waitForAngularEnabled(true)
-     await browser.get("http://localhost:4200/");
+     await browser.get("http://localhost:4200/",10000);
      try{let HeaderText = await Header.getText();
         console.log("Browser Header :-" + HeaderText);}
       catch(error){console.log(error)}
